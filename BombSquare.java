@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 public class BombSquare extends GameSquare
 {
     private GameBoard board;                            // Object reference to the GameBoard this square is part of.
@@ -12,4 +16,11 @@ public class BombSquare extends GameSquare
         this.board = board;
         this.hasBomb = ((int) (Math.random() * MINE_PROBABILITY)) == 0;
     }    
+
+    @Override
+
+    public void mousePressed(MouseEvent e){
+        system.out.println(e.getXLocation() + "," + e.getYLocation());
+
+    }
 }
