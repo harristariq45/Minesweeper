@@ -30,9 +30,9 @@ public class BombSquare extends GameSquare
         {
             System.out.println(" bomb found ");
             setImage("images/bomb.png");
-            JOptionPane.showMessageDialog(null,
-            "YOU LOST ",
-            JOptionPane.PLAIN_MESSAGE);
+            // JOptionPane.showMessageDialog(null,
+            // "YOU LOST ",
+            // JOptionPane.PLAIN_MESSAGE);
             board.dispose();
         }
 
@@ -50,7 +50,16 @@ public class BombSquare extends GameSquare
         System.out.println(" right click ");
         System.out.println(getXLocation() + "   right clicked   " + getYLocation());
 
-        setImage("images/flag.png");
+        
+
+        if (ImageIcon("images/flag.png")){
+            
+            setImage("images/blank.png");
+        }
+        else{
+            setImage("images/flag.png");
+        }
+        
 
         if ( hasBomb == true)
         {
