@@ -8,6 +8,7 @@ public class BombSquare extends GameSquare
     private boolean hasBomb; // True if this squre contains a bomb. False otherwise.
     private boolean clicked;
     private boolean flagged;
+    private int nBombs=0;
 
     public static final int MINE_PROBABILITY = 10;
 
@@ -22,7 +23,16 @@ public class BombSquare extends GameSquare
 
     @Override
     public void leftClicked(){
-        
+
+        System.out.println(" left click ");
+        System.out.println(getXLocation() + "  left clicked   " + getYLocation());
+
+
+        int xCoordinate = getXLocation();
+        int yCorrdinate = getYLocation();
+
+
+
         if ( hasBomb == true)
         {
             System.out.println(" bomb found ");
@@ -35,13 +45,37 @@ public class BombSquare extends GameSquare
             System.out.println(getXLocation() + "  left clicked   " + getYLocation());
         }
 
-        if ( hasBomb == false && this.clicked == false )
-        {   
-            System.out.println(" bomb not found ");
-            setImage("images/0.png");
-            System.out.println(" left click ");
-            System.out.println(getXLocation() + "  left clicked   " + getYLocation());
-        }
+        else
+            if  ( hasBomb == false && this.clicked == false )
+            {   
+                System.out.println(" bomb not found ");
+
+
+                for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
+                { 
+                    //   System.out.println(" 1 ");
+
+                    for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
+                    {
+                        System.out.println(" 2 ");
+
+                        BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
+
+                        if (nSquare.hasBomb)
+                        {
+                            nBombs++;
+                            System.out.println(" nBombs= "+ nBombs);
+                        }
+                        
+                    }
+                } 
+
+
+
+                setImage("images/0.png");
+
+            }
+
 
         this.clicked = true;
 
