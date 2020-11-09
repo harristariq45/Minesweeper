@@ -24,94 +24,91 @@ public class BombSquare extends GameSquare
     @Override
     public void leftClicked(){
 
-        System.out.println(" left click ");
-        System.out.println(getXLocation() + "  left clicked   " + getYLocation());
-
-
-        int xCoordinate = getXLocation();
-        int yCorrdinate = getYLocation();
-
-
-
         if ( hasBomb == true)
         {
-            System.out.println(" bomb found ");
             setImage("images/bomb.png");
-            // JOptionPane.showMessageDialog(null,
-            // "YOU LOST ",
-            // JOptionPane.PLAIN_MESSAGE);
-            // board.dispose();
-            System.out.println(" left click ");
-            System.out.println(getXLocation() + "  left clicked   " + getYLocation());
+
         }
 
         else
-            if  ( hasBomb == false && this.clicked == false )
-            {   
-                System.out.println(" bomb not found ");
-
-
-                for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
-                { 
-                    //   System.out.println(" 1 ");
-
-                    for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
-                    {
-                        System.out.println(" 2 ");
-
-                        BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
-
-                        if (nSquare.hasBomb)
-                        {
-                            nBombs++;
-                            System.out.println(" nBombs= "+ nBombs);
-                        }
-                        
-                    }
-                } 
-
-
-
-                setImage("images/0.png");
-
-            }
-
-
+        if  ( hasBomb == false && this.clicked == false )
+        {   
+            numOfBombs();
+        }
+        
         this.clicked = true;
-
     }
 
     public void rightClicked()
     {   
-        // this.flagged = true;
-        // setImage("images/flag.png");
-
-        // if (this.flagged== true)
-        // {           
-        //     setImage("images/blank.png");
-        //     this.clicked = false; 
-        //     System.out.println(" right click 2");
-        // }
-        if ( this.clicked== false){
+        if ( this.clicked== false)
+        {
             if ( this.flagged == false)
             {
                 setImage("images/flag.png");
                 this.flagged = true;
-                System.out.println(" right click 1 ");
             }
 
             else
             {
                 setImage("images/blank.png");
                 this.flagged = false;
-                System.out.println(" right click 2 ");
             }
         }
     }
 
+    public void numOfBombs()
+    {
+        int xCoordinate = getXLocation();
+        int yCorrdinate = getYLocation();
 
-
+        for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
+        {
+            for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
+            {
+                BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
+                if (nSquare.hasBomb)
+                {
+                    nBombs++;
+                    System.out.println(" nBombs= "+ nBombs);
+                }                   
+            }
+        } 
+        if (nBombs == 1){
+            setImage("images/1.png");
+        }
+        if (nBombs == 2){
+            setImage("images/2.png");
+        }
+        if (nBombs == 3){
+            setImage("images/3.png");
+        }
+        if (nBombs == 4){
+            setImage("images/4.png");
+        }
+        if (nBombs == 5){
+            setImage("images/5.png");
+        }
+        if (nBombs == 6){
+            setImage("images/6.png");
+        }
+        if (nBombs == 7){
+            setImage("images/7.png");
+        }
+        if (nBombs == 8){
+            setImage("images/8.png");
+        }
+        if (nBombs == 9){
+            setImage("images/9.png");
+        }
+        if(nBombs ==0){
+            setImage("images/0.png");
+        }
+    }
 }
+
+
+
         // System.out.println(" right click ");
         // System.out.println(getXLocation() + "   right clicked   " + getYLocation());
 
@@ -158,3 +155,43 @@ public class BombSquare extends GameSquare
 //         System.out.println(super.getXLocation() + "," );
 //         return super.getXLocation();
 //     }
+                // for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
+                // { 
+                //     //   System.out.println(" 1 ");
+
+                //     for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
+                //     {
+                //         System.out.println(" 2 ");
+
+                //         BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
+
+                //         if (nSquare.hasBomb)
+                //         {
+                //             nBombs++;
+                //             System.out.println(" nBombs= "+ nBombs);
+                //         }
+                        
+                //     }
+                // } 
+                // if (nBombs == 2){
+                //     setImage("images/2.png");
+                // }
+                // else{
+                //     setImage("images/0.png");
+                // }
+
+                        // this.flagged = true;
+        // setImage("images/flag.png");
+
+        // if (this.flagged== true)
+        // {           
+        //     setImage("images/blank.png");
+        //     this.clicked = false; 
+        //     System.out.println(" right click 2");
+        // }
+
+
+            // JOptionPane.showMessageDialog(null,
+            // "YOU LOST ",
+            // JOptionPane.PLAIN_MESSAGE);
+            // board.dispose();
