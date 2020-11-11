@@ -25,18 +25,20 @@ public class BombSquare extends GameSquare
     public void leftClicked(){
 
         if ( hasBomb == true)
-        {
+        {   
+            this.clicked = true;
             setImage("images/bomb.png");
+            // board.dispose();
 
         }
 
         else
         if  ( hasBomb == false && this.clicked == false )
         {   
+            this.clicked = true;
             numOfBombs();
         }
         
-        this.clicked = true;
     }
 
     public void rightClicked()
@@ -62,48 +64,75 @@ public class BombSquare extends GameSquare
         int xCoordinate = getXLocation();
         int yCorrdinate = getYLocation();
 
+        nBombs = 0;
+
         for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
         {
             for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
             {
                 BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
-                if (nSquare.hasBomb)
+                if (nSquare != null && nSquare.hasBomb)
                 {
                     nBombs++;
-                    System.out.println(" nBombs= "+ nBombs);
-                }                   
+                }
+
             }
         } 
-        if (nBombs == 1){
-            setImage("images/1.png");
+        
+        setImage("images/" + nBombs +".png");
+
+        if(nBombs == 0)
+        {
+            // setImage("images/0.png");
+            
+            for(int x = xCoordinate-1 ; x<xCoordinate+2 ; x++)
+            {
+                for(int y = yCorrdinate-1 ; y<yCorrdinate+2 ; y++)
+                {
+                    BombSquare nSquare = (BombSquare) board.getSquareAt(x, y);
+                    // if (nSquare.hasBomb)
+                    // {
+                    //     nBombs++;
+                    //     System.out.println(" nBombs= "+ nBombs);
+                    // }
+                    
+                    if( nSquare != this && nSquare != null){
+                    // setImage("images/0.png");
+                        nSquare.leftClicked();
+ 
+                    }
+                }
+            } 
+
         }
-        if (nBombs == 2){
-            setImage("images/2.png");
-        }
-        if (nBombs == 3){
-            setImage("images/3.png");
-        }
-        if (nBombs == 4){
-            setImage("images/4.png");
-        }
-        if (nBombs == 5){
-            setImage("images/5.png");
-        }
-        if (nBombs == 6){
-            setImage("images/6.png");
-        }
-        if (nBombs == 7){
-            setImage("images/7.png");
-        }
-        if (nBombs == 8){
-            setImage("images/8.png");
-        }
-        if (nBombs == 9){
-            setImage("images/9.png");
-        }
-        if(nBombs ==0){
-            setImage("images/0.png");
-        }
+        // if (nBombs == 1){
+        //     setImage("images/1.png");
+        // }
+        // if (nBombs == 2){
+        //     setImage("images/2.png");
+        // }
+        // if (nBombs == 3){
+        //     setImage("images/3.png");
+        // }
+        // if (nBombs == 4){
+        //     setImage("images/4.png");
+        // }
+        // if (nBombs == 5){
+        //     setImage("images/5.png");
+        // }
+        // if (nBombs == 6){
+        //     setImage("images/6.png");
+        // }
+        // if (nBombs == 7){
+        //     setImage("images/7.png");
+        // }
+        // if (nBombs == 8){
+        //     setImage("images/8.png");
+        // }
+        // if (nBombs == 9){
+        //     setImage("images/9.png");
+        // }
+
     }
 }
 
